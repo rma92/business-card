@@ -118,6 +118,26 @@ Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
   height:10mm;
   width:53mm;
 }
+.ccmagstripe
+{
+  position:absolute;
+  top:0.223in;
+  height:0.330in;/*each trakc is 0.110in*/
+  left:0;
+  right:0;
+  background-color:#000;
+}
+.ccemv
+{
+  position:absolute;
+  top:18mm;
+  left:7.5mm;
+  width:13.3mm;
+  height:11.2mm;
+  border-radius:2mm;
+  background-color:rgba(255,255,255,0.5);
+
+}
 </style>
 </head>
 <body>
@@ -130,9 +150,11 @@ Front.<br/>
   &nbsp;&nbsp;1999&nbsp;&nbsp;&nbsp; 12/15<br/>
   Dick Dick Dick
   </div>
+  <div class="ccemv">&nbsp;</div>
 </div>
 <div id="front" class="ccard ccbimg">
 Back.
+  <div class="ccmagstripe">&nbsp;</div>
   <div class="ccsignbox">Sign</div>
   <div class="cclast4">9112</div>
   <div class="cccvv">782</div>
