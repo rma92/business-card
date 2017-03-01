@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--
+US Business Card: 3.5in x 2in;
+EU Business Card: 3.37in x 2.12in;
+JP Business Card: 3.583in x 2.165in;
+A8:               2.913in x 2.047in;
+Credit Card:      3.370in x 2.125in;
+
+Minimum (ex A8):  3.37in x 2in; ( 89mm x 51mm)
+Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
+-->
+<style>
+.bcard
+{
+  width: 3.5in; /* us business card width */
+  height: 2in;   /* us business card height */
+}
+.bcardx
+{
+  /*width: 3.5in; /* us business card width */
+  width: 3.37in; /* credit card width */
+  height: 2in;   /* us business card height */
+}
+.ccard
+{
+  width: 3.37in; /* credit card width */
+  height: 2.125in;   /* us business card height */
+}
+.ccimg
+{
+  background: url('chasefreedom.jpg');
+  background-size:cover;
+}
+.ccbimg
+{
+  background: url('chaseback.jpg');
+  background-size:cover;
+}
+.bcardx,.bcard,.ccard
+{
+  border:1px solid #888;
+  margin: 0.5in;
+  position: relative;
+}
+.ccnum
+{
+  font-family: monospace;
+  font-weight: bold;
+  font-size:5.22mm;
+  line-height: 5.22mm;/*5.22 standard*/
+  margin:0;
+  padding:0;
+  position: absolute;
+  /* the midpoint is 21.42mm from the bottom. The top is 24.03.*/
+  /* the card is 53.92mm to 54.18mm tall, so 30.15mm from top*/
+  top: 30.15mm;
+  left: 9.96mm;/*10.18mm +/- 0.25*/
+  width:65.31mm;
+  border:1px solid red;
+  background-color:rgba(255,255,255,0.5);
+}
+.ccinfo
+{
+  /*top is 17.83 FROM BOTTOM*/
+  font-family: monospace;
+  font-weight: bold;
+  font-size:5.22mm;
+  line-height: 5.22mm;/*5.22 standard*/
+  margin:0;
+  padding:0;
+  position: absolute;
+  top: 38.09mm;/*should be 36.09 +- 1*/
+  left: 7.65mm;/*7.65mm +/- 0.25*/
+  width:65.31mm;
+  border:1px solid red;
+  background-color:rgba(255,255,255,0.5);
+}
+.cccvv
+{
+  background-color:rgba(255,255,255,0.5);
+  font-family: monospace;
+  font-weight:bold;
+  line-height:7mm;
+  font-size:4mm;
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:20mm;
+  left:76mm;
+}
+.cclast4
+{
+  background-color:rgba(255,255,255,0.5);
+  font-family: monospace;
+  font-weight:bold;
+  line-height:7mm;
+  font-size:4mm;
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:20mm;
+  left:66mm;
+}
+.ccsignbox
+{
+  background-color:rgba(255,255,255,0.5);
+  font-family: monospace;
+  font-weight:bold;
+  line-height:7mm;
+  font-size:4mm;
+  position:absolute;
+  padding:0;
+  margin:0;
+  top:20mm;
+  left:22mm;
+  height:10mm;
+  width:53mm;
+}
+</style>
+</head>
+<body>
+<div id="front" class="ccard ccimg">
+Front.<br/>
+  <div id="ccnum" class="ccnum">
+  4417 1234 5678 9112
+  </div>
+  <div class="ccinfo">
+  &nbsp;&nbsp;1999&nbsp;&nbsp;&nbsp; 12/15<br/>
+  Dick Dick Dick
+  </div>
+</div>
+<div id="front" class="ccard ccbimg">
+Back.
+  <div class="ccsignbox">Sign</div>
+  <div class="cclast4">9112</div>
+  <div class="cccvv">782</div>
+</div>
+
+</body>
