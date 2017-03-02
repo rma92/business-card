@@ -20,7 +20,7 @@ Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
 .bcardx
 {
   /*width: 3.5in; /* us business card width */
-  width: 3.37in; /* credit card width */
+  width: 85mm; /* 3.37incredit card width */
   height: 2in;   /* us business card height */
 }
 .ccard
@@ -40,7 +40,7 @@ Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
 }
 .bcardx,.bcard,.ccard
 {
-  border:1px solid #888;
+  border:1px solid #ffc;
   margin: 0.5in;
   position: relative;
 }
@@ -136,10 +136,204 @@ Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
   background-color:rgba(255,255,255,0.5);
 
 }
+/*Business card specific info*/
+#front
+{
+  font-family: "ClearviewHwy-3-W";
+}
+#bcardinner
+{
+  position:absolute;
+  top:7mm;
+  bottom:7mm;
+  left:2mm;
+  right:2mm;
+}
+#bcardname
+{
+  font-family: "ClearviewHwy-5-B";
+  font-size: 28px;
+}
+#bcardcontact
+{
+  font-family: "ClearviewHwy-3-W";
+  font-size: 11px;
+  line-height:14px;
+}
+#bcardpost
+{
+  display:inline-block;
+  vertical-align:top;
+}
+#back
+{
+}
+/*metric ruler*/
+.rulermm
+{
+  position:absolute;
+  overflow:hidden;
+  top:0;
+  left:0;
+  width:80mm;
+  height:10mm;
+  margin:0;
+  padding:0;
+}
+.rulermm ul
+{
+  list-style-type:none;
+  padding:0;margin:0;
+}
+.rulermm ul li /*marker*/
+{
+  display:block;
+  float:left;
+  width:0.9mm;
+  padding:0;margin:0;
+  border-right:0.1mm solid black;
+  height:2mm;
+}
+.rulermm ul li.r1mm
+{ /*1mm lines*/
+  height:2mm;
+}
+.rulermm ul li.r10mm
+{ /*1mm lines*/
+  height:5mm;
+}
+.rulermm ul li.r5mm
+{ /*1mm lines*/
+  height:3.5mm;
+}
+.rmmlabel
+{
+  position:relative;
+  left:-1mm;
+  top:2mm;
+  font-size:3.5mm;
+}
+#blogo
+{
+  position:absolute;
+  margin-left:auto;
+  margin-right:auto;
+  top:1mm;
+  right:0;
+  left:0;
+  width:56mm;
+  height:56mm;
+}
+#bcardqr
+{
+  position:absolute;
+  top:11mm;
+  right:3mm;
+  width:24mm;
+  height:24mm;
+}
+.bcardtelephone::before
+{
+  content: "T:";
+}
+.bcardweb:before
+{
+  content: "W:";
+}
+.bcardemail::before
+{
+  content: "E:";
+}
+.bcardpost1::before
+{
+  content: "P:";
+}
+.bcardpost2::before
+{
+  content: " ";
+}
+.bcardemail::before, .bcardtelephone::before, .bcardweb::before, .bcardpost1::before, .bcardpost2::before
+{
+  display:inline-block;
+  text-align:right;
+  width:18px;
+}
+#rulermm
+{
+  position:absolute;
+  bottom:0mm;
+  right:0;
+  left:1mm;
+}
+#rulerin
+{
+  left:1mm;
+}
+@media all {
+	.page-break	{ display: none; }
+}
+
+@media print {
+	.page-break	{ display: block; page-break-before: always; }
+}
 </style>
+<script>
+function r()
+{
+  //inches
+  var s = "";
+  for(var i = 0; i < 4; ++i )
+  { //each inch.
+    s += "<div style='border-left:1px solid black;top:-2mm;height:8mm;position:absolute;left:" + i + "in;'>" 
+      + "<div style='position:relative;top:3mm;'>" + i 
+      + ((i == 0)?"<span style='font-size:2mm'>in</span>":"")
+      + "</div>"
+      + "</div>";
+    for( var j = 0; j < 1; j += 0.25)
+    {
+      s += "<div style='border-left:1px solid black;top:-2mm;height:";
+      if( j % 1 == 0.5 )
+      {
+        s += 5;
+      }
+      else
+      {
+        s += 3.25;
+      }
+      s += "mm;position:absolute;left:" + (i + j) + "in;'>" +  "</div>"; 
+    }
+  }
+  document.getElementById("rulerin").innerHTML = s;
+  //metric
+  s = "";
+  for(var i = 0; i < 87; ++i )
+  { //each mm
+    if( i % 10 == 0 )
+    {
+    s += "<div style='border-left:1px solid black;top:-5mm;height:8mm;position:absolute;left:" + i + "mm;'>" 
+      + "<div style='position:relative;top:-3mm;'>" + (i/10)
+      + ((i == 0)?"<span style='font-size:2mm;vertical-align:top;'>cm</span>":"")
+      + "</div>"
+      + "</div>"; 
+    }
+    else if( i % 5 == 0)
+    {
+    s += "<div style='border-left:1px solid black;top:-3.5mm;height:6.5mm;position:absolute;left:" + i + "mm;'>" 
+      + "</div>"; 
+    }
+    else
+    {
+    s += "<div style='border-left:1px solid black;top:-2mm;height:5mm;position:absolute;left:" + i + "mm;'>" 
+      + "</div>"; 
+    }
+  }
+  document.getElementById("rulermm").innerHTML = s;
+}
+</script>
 </head>
-<body>
-<div id="front" class="ccard ">
+<body onload="r()">
+<!--
+<div id="front" class="bcardx ">
   <div id="ccnum" class="ccnum">
   4417 1234 5678 9112
   </div>
@@ -149,11 +343,40 @@ Minimum (inc A8): 2.913in x 2in; ( 74mm x 51mm)
   </div>
   <div class="ccemv">&nbsp;</div>
 </div>
-<div id="front" class="ccard ">
+<div id="back" class="bcardx ">
   <div class="ccmagstripe">&nbsp;</div>
   <div class="ccsignbox">Sign</div>
   <div class="cclast4">9112</div>
   <div class="cccvv">782</div>
 </div>
+-->
+<div id="front" class="bcardx">
+  <div id="rulerin" style="position:relative;">
+  </div>
+  <div id="bcardinner">
+    <div id="bcardname">Richard A. Marino</div>
+    <div id="bcardsubtitle">Measuring Up Success</div>
+    <div id="bcardcontact">
+     <span class="bcardtelephone">+1-857-288-8884</span><br/>
+     <span class="bcardemail">q@rm.vg</span><br/>
+     <span class="bcardweb">http://rm.vg/</span><br/>
+      <span class="bcardpost1">1 Trans-Manhattan Expressway</span><br/>
+      <span class="bcardpost2">New York, NY 10019</span>
+      <br/>
+    </div>
+    <img id="bcardqr" src="vcardqr4.png">
+  </div>
+  <div id="rulermm" style="">
+  </div>  
+</div>
+<div class="page-break"></div>
+<div id="back" class="bcardx">
+  <img id=blogo src=rmlogo.svg>
+</div>
+
+<div style="width:10px;height:10px:border:4px solid black;background-color:#00ffff;">c</div>
+  <div style="width:10px;height:10px:border:4px solid black;background-color:#ff00ff;">m</div>
+  <div style="width:10px;height:10px:border:4px solid black;background-color:#ffff00;">y</div>
+  <div style="width:10px;height:10px:border:4px solid black;background-color:#000;">k</div>
 
 </body>
